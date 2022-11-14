@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://blhrarv4r138b"]
+
+[ext_resource type="FontFile" uid="uid://b3ybex4rjyd8k" path="res://minecraft.ttf" id="1_067vv"]
+[ext_resource type="Script" path="res://menu_button.gd" id="1_wgm42"]
+
+[node name="MenuButton" type="Button"]
+custom_minimum_size = Vector2i(360, 60)
+offset_right = 1040.0
+offset_bottom = 8.0
+flat = true
+script = ExtResource("1_wgm42")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_067vv")
+theme_override_font_sizes/font_size = 48
+text = "New Game"

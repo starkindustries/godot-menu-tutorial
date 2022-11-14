@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct2wtlpm0aipc"]
+
+[ext_resource type="PackedScene" uid="uid://bcm1royyue85y" path="res://custom_scene.tscn" id="1_tk18n"]
+
+[node name="NewGame" instance=ExtResource("1_tk18n")]
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" parent="." index="0"]
+layout_mode = 3
+
+[node name="VBoxContainer" parent="CenterContainer" index="0"]
+layout_mode = 3
+
+[node name="Label" parent="CenterContainer/VBoxContainer" index="0"]
+layout_mode = 3
+
+[node name="Button" parent="CenterContainer/VBoxContainer" index="1"]
+layout_mode = 3

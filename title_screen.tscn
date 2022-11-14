@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://cob0enxlk6ag7"]
+
+[ext_resource type="Script" path="res://title_screen.gd" id="1_hf38f"]
+[ext_resource type="Texture2D" uid="uid://dyej8a1tl8qwa" path="res://ui-spritesheet.png" id="1_th1qs"]
+[ext_resource type="PackedScene" uid="uid://bs0xgmnpjce2t" path="res://new_game_button.tscn" id="2_yw76n"]
+[ext_resource type="PackedScene" uid="uid://b805yjedfo1eu" path="res://continue_button.tscn" id="3_j08ug"]
+[ext_resource type="PackedScene" uid="uid://d4aju7ctcewub" path="res://options_button.tscn" id="4_71neh"]
+[ext_resource type="FontFile" uid="uid://b3ybex4rjyd8k" path="res://minecraft.ttf" id="5_x737f"]
+[ext_resource type="PackedScene" uid="uid://b3jtcpsgbm1o5" path="res://fade_in.tscn" id="6_gof3c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geo55"]
+atlas = ExtResource("1_th1qs")
+region = Rect2(112, 464, 192, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5ie8"]
+atlas = ExtResource("1_th1qs")
+region = Rect2(560, 480, 96, 16)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hf38f")
+
+[node name="Menu" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 120.0
+offset_top = 80.0
+offset_right = 1160.0
+offset_bottom = 640.0
+
+[node name="Logo" type="TextureRect" parent="Menu"]
+custom_minimum_size = Vector2i(0, 200)
+layout_mode = 2
+offset_right = 1064.0
+offset_bottom = 200.0
+texture = SubResource("AtlasTexture_geo55")
+stretch_mode = 4
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+layout_mode = 2
+offset_top = 204.0
+offset_right = 1064.0
+offset_bottom = 504.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+layout_mode = 2
+offset_right = 360.0
+offset_bottom = 300.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="NewGame" parent="Menu/CenterRow/Buttons" instance=ExtResource("2_yw76n")]
+layout_mode = 2
+offset_top = 40.0
+offset_right = 360.0
+offset_bottom = 100.0
+scene_to_load = "res://new_game.tscn"
+
+[node name="ContinueButton" parent="Menu/CenterRow/Buttons" instance=ExtResource("3_j08ug")]
+layout_mode = 2
+offset_top = 120.0
+offset_right = 360.0
+offset_bottom = 180.0
+scene_to_load = "res://continue.tscn"
+
+[node name="OptionsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource("4_71neh")]
+layout_mode = 2
+offset_top = 200.0
+offset_right = 360.0
+offset_bottom = 260.0
+scene_to_load = "res://options.tscn"
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
+layout_mode = 2
+offset_left = 364.0
+offset_right = 1064.0
+offset_bottom = 300.0
+size_flags_horizontal = 3
+
+[node name="Characters" type="TextureRect" parent="Menu/CenterRow/CenterContainer"]
+custom_minimum_size = Vector2i(700, 300)
+layout_mode = 2
+offset_right = 700.0
+offset_bottom = 300.0
+texture = SubResource("AtlasTexture_p5ie8")
+stretch_mode = 4
+
+[node name="Version" type="Label" parent="Menu"]
+layout_mode = 2
+offset_top = 508.0
+offset_right = 1064.0
+offset_bottom = 578.0
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("5_x737f")
+theme_override_font_sizes/font_size = 32
+text = "Version 0.1
+S6 Industries"
+
+[node name="FadeIn" parent="." instance=ExtResource("6_gof3c")]
+visible = false
+layout_mode = 1
+
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_fade_in_fade_finished"]
